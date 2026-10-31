@@ -1,0 +1,11 @@
+# 生成物・ダウンロード物はリポジトリに含めない
+data/
+runs/
+outputs/
+assets/so101/
+*.pt
+*.mp4
+results.zip
+__pycache__/
+.ipynb_checkpoints/
+.env

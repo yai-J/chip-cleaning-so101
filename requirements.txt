@@ -1,0 +1,6 @@
+mujoco>=3.2
+ultralytics>=8.3
+numpy
+opencv-python-headless
+imageio[ffmpeg]
+pyyaml

@@ -1,0 +1,65 @@
+# 切粉検出・自律清掃システム 設定ファイル
+seed: 0
+
+paths:
+  robot_xml: assets/so101/so101_new_calib.xml
+  dataset_dir: data/chips_seg
+  weights: runs/chip_seg/weights/best.pt
+  output_dir: outputs
+
+sim:
+  timestep: 0.002
+
+scene:
+  table_edge_y: -0.10          # 作業台の右端（これより右が回収シュート）
+  workspace:                   # 切粉を撒く範囲 [m]
+    x: [0.13, 0.25]
+    y: [-0.07, 0.09]
+  bin:                         # 右側の回収トレー
+    x: [0.04, 0.34]
+    y: [-0.20, -0.10]
+    depth: 0.05
+  chip:
+    half_size: [0.004, 0.004, 0.002]
+    mass: 0.001
+    friction: 0.6
+    n_min: 18
+    n_max: 26
+  max_chips: 90
+
+brush:
+  tip_offset: 0.03             # グリッパ先端からブラシ下面までの距離
+  half_width: 0.03             # 掃く幅の半分（6cm幅）
+  half_thick: 0.006
+  half_len: 0.012
+  sweep_height: 0.0015         # 掃引時のブラシ下面の高さ
+
+camera_top:
+  pos: [0.19, -0.04, 0.60]
+  fovy: 34
+  width: 640
+  height: 480
+
+camera_view:
+  pos: [0.50, 0.30, 0.32]
+  lookat: [0.17, -0.05, -0.01]
+  fovy: 45
+  width: 640
+  height: 480
+
+detector:
+  conf: 0.4
+  imgsz: 640
+
+planner:
+  cluster_radius: 0.03
+  back_margin: 0.03            # 塊の奥側（+y）からの助走距離
+  end_y: -0.115                # ストローク終点（台端を越えた位置）
+  max_strokes: 10
+
+motion:
+  approach_height: 0.035
+  sweep_speed: 0.06            # [m/s]
+  move_time: 1.2               # 接近・上昇などの移動時間 [s]
+  settle_time: 0.4
+  fps: 30
