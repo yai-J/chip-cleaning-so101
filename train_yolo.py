@@ -19,7 +19,7 @@ if __name__ == "__main__":
     from ultralytics import YOLO
     model = YOLO(a.model)
     model.train(data=os.path.join(cfg["paths"]["dataset_dir"], "data.yaml"), epochs=a.epochs, imgsz=a.imgsz,
-                batch=a.batch, device=a.device, project="runs", name="chip_seg", exist_ok=True,
+            batch=a.batch, device=a.device, project=os.path.abspath("runs"), name="chip_seg", exist_ok=True,
                 fliplr=0.0, mosaic=0.5, seed=cfg["seed"], plots=True)
     metrics = YOLO("runs/chip_seg/weights/best.pt").val(data=os.path.join(cfg["paths"]["dataset_dir"], "data.yaml"),
                                                         imgsz=a.imgsz, device=a.device)
