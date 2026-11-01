@@ -24,7 +24,7 @@ if __name__ == "__main__":
     ap.add_argument("--detector", choices=["yolo", "gt"], default="yolo")
     ap.add_argument("--weights", default=None)
     ap.add_argument("--seed", type=int, default=3)
-    ap.add_argument("--min-seconds", type=float, default=120, help="動画がこの長さに達するまで加工サイクルを追加")
+    ap.add_argument("--min-seconds", type=float, default=75, help="動画がこの長さに達するまで加工サイクルを追加")
     ap.add_argument("--max-seconds", type=float, default=170)
     ap.add_argument("--max-cycles", type=int, default=6)
     ap.add_argument("--scale", type=float, default=1.0, help="動画の解像度倍率（動作確認時は 0.5 など）")
